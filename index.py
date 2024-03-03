@@ -3,7 +3,9 @@ from video import Video
 
 app = Flask(__name__)
 
-
+@app.route('/')
+def index():
+    return "Hello, World!"
 
 # creating a route where the <api user> can pass in a video link to create a video object
 @app.route('/api/post-video', methods=['POST'])
