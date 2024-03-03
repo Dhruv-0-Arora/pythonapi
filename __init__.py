@@ -26,6 +26,24 @@ def create_video():
 
 
 
+@app.route('/api/get-title', methods=['GET'])
+def get_title():
+    # getting the api get request parameter of video link
+    video_link = request.args.get('video')
+    
+    # checking if video link is provided
+    if video_link is None:
+        return jsonify({"status": "failed", "message": "No video link provided"})
+
+    # creating new video class with video_link
+    new_video = Video(video_link)
+
+    # returning the title
+    return jsonify({"status": "success", "title": new_video.getTitle()})
+
+
+
+
 
 # running the app
 if __name__ == '__main__':

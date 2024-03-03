@@ -1,0 +1,4 @@
+flask==3.0.2
+jsonify
+google-api-python-client==2.120.0
+youtube-transcript-api==0.6.2
