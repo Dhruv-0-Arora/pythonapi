@@ -22,7 +22,7 @@ from IPython.display import Markdown
 
 
 # final variable for the Gemini prompt
-GEMINI_PROMPT = "Using the text that I have provided below, please find the relevant information that is worthy for short form content based on the provided content's theme from an educational lens. This relevant information should be between 60-120 words. Please repeat these sections word for word and divide the sections by a ` symbol. Please keep the punctuation and spacing exactly as it is. Everything should be exactly the way it was provided. Please provide me with around 20 sections of relevant information. Thank you! \n"
+GEMINI_PROMPT = "Using the text that I have provided below, please find the relevant information that is worthy for short form content based on the provided content's theme from an educational lens. This relevant information should be between 60-120 words. Please repeat these sections word for word and divide the sections by a ` symbol. Please keep the punctuation and spacing exactly as it is. Everything should be exactly the way it was provided. Please provide me with around 20 sections of relevant information that is exactly formated the way it is given. Thank you and make sure to separate each with a '`'! \n"
 
 
 class Video:
@@ -43,6 +43,8 @@ class Video:
         self.valuable_information = self.find_valuable_information().split("`")
         self.valuable_information = [info for info in self.valuable_information if info and info.strip('\n')]
         self.valuable_information = [info for info in self.valuable_information if info]
+        if self.valuable_information and not self.valuable_information[0]:
+            self.valuable_information.remove('')
         
         print (self.valuable_information)
         
