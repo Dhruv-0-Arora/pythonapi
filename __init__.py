@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from video import Video
 
 app = Flask(__name__)
 
@@ -10,11 +11,25 @@ def home():
 # creating a route where the <api user> can pass in a video link to create a video object
 @app.route('/api/post-video', methods=['POST'])
 def create_video():
+
+    # getting the api post request parameter of video link
     data = request.get_json()
-    video_link = data.get('video')  # Extract the video link from the data
-    print(video_link)
-    # creating a new video object with the video link that is passed in the request
+    video_link = data.get('video') 
+    
+    # checking if video link is provided
+    if video_link is None:
+        return jsonify({"status": "failed", "message": "No video link provided"})
+
+    # creating new video class with video_link
+    new_video = Video(video_link)
+
+    # returning if successful
     return jsonify({"status": "success"})
 
+
+
+
+
+# running the app
 if __name__ == '__main__':
     app.run(debug=True)
