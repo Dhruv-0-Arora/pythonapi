@@ -64,7 +64,6 @@ class Video:
         while len(self.timestamps) < 20:
             self.find_valuable_information()       
         
-        print (self.timestamps)
 
 
     # helping function to retrieve the video id from the video link
@@ -104,6 +103,11 @@ class Video:
     # function to get the title
     def getTitle(self):
         return self.title
+
+    # returning the timestamps
+    def getTimeStamps(self):
+        return self.timestamps
+
     
     
     
@@ -136,7 +140,6 @@ class Video:
 
         if start != -1 and end != 0:
             self.timestamps.append((start, end))
-        print (self.timestamps)
     
 
     # helping function to get the transcript in prompt format (full joined string)

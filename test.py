@@ -1,3 +1,4 @@
+# this file is used to test the local requesting of the API
 import requests
 
 url = "http://127.0.0.1:5000/api/post-video"

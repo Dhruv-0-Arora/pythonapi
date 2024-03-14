@@ -3,10 +3,6 @@ from video import Video
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return "Hello, World!"
-
 # creating a route where the <api user> can pass in a video link to create a video object
 @app.route('/api/post-video', methods=['POST'])
 def create_video():
@@ -22,8 +18,10 @@ def create_video():
     # creating new video class with video_link
     new_video = Video(video_link)
 
-    # returning if successful
-    return jsonify({"status": "success"})
+    # returning the timestamps object
+    return new_video.getTimestamps()
+    
+    
 
 
 
